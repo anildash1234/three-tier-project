@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS-CREDENTIALS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
+    environment {
+      AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+      AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+      AWS_DEFAULT_REGION = 'ap-south-1'
     parameters {
         string(name: 'ACTION', defaultValue: 'apply', description: 'Terraform action: apply or destroy')    
     }
