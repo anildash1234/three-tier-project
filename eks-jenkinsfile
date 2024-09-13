@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS-CREDENTIALS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
     parameters {
         string(name: 'ACTION', defaultValue: 'apply', description: 'Terraform action: apply or destroy')    
     }
@@ -43,4 +44,5 @@ pipeline {
               }
          }
     }
+}
 
