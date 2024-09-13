@@ -33,12 +33,6 @@ pipeline {
                    }
              }
         
-        stage('Terraform plan'){
-             steps{
-                 
-                      sh 'terraform plan'
-                   }
-             }
         
         stage('Terraform apply/destroy'){
              steps{
